@@ -10,13 +10,26 @@ ARG VERSION=1.0.0
 
 USER root
 WORKDIR /
-RUN apt-get update && apt-get install -y python3-venv git bash net-tools
+RUN set -eux \
+    && DEBIAN_FRONTEND=noninteractive apt-get update -qq \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --no-install-recommends --no-install-suggests \
+    python3-venv \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && true
 
-#
 RUN mkdir -p /app
-COPY requirements.txt /app
-USER app
+# TODO(JEFF): There is no reason why we cannot run this bot as a non-
+# privileged user.
+#USER app
 WORKDIR /app
+COPY .env /app
+COPY .env.dist /app
+COPY discord_bot.py /app
+COPY LICENSE.md /app
+COPY README.md /app
+COPY requirements.txt /app
+COPY TODO.md /app
 
 # expose inside container
 ENV \
@@ -24,8 +37,7 @@ ENV \
   LC_ALL=C.UTF-8 \
   VERSION=${VERSION}
 
-RUN python3 -m venv /app/venv &&
-  /app/venv/bin/pip3 install discord.py requests &&
-  python3 -m build
-#RUN python3 -m pip install /app/dist/update_ddns_zone-${VERSION}-py3-none-any.whl
+RUN python3 -m venv /app/venv && \
+  /app/venv/bin/pip3 install python-dotenv discord.py requests
 
+ENTRYPOINT ["/app/venv/bin/python3", "/app/discord_bot.py"]

@@ -3,12 +3,12 @@
 #
 ---
 
-networks:
-  proxy:
-    external: true
+#networks:
+#  traefik-proxy:
+#    external: true
 
 services:
-  ddns_update:
+  markdown-link-preview-bot:
     build:
       context: .
       dockerfile: "Dockerfile"
