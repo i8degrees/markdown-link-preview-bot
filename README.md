@@ -11,6 +11,8 @@ This project README walks you through setting up the repository, configuring you
 
 Install this Discord bot with one-click by [markdown-link-preview](https://discord.com/oauth2/authorize?client_id=1565541323333705780)
 
+Alternatively, there is a Docker image one can build or pull for local usage.
+
 ### Developers
 
 #### 1. Discord Developer Portal Configuration
@@ -61,7 +63,13 @@ Clone the repository and set up the Python virtual environment and dependencies:
 git clone https://github.com/i8degrees/markdown-link-preview.git
 cd markdown-link-preview
 python3 -m venv venv
-venv/bin/pip3 install discord.py requests
+venv/bin/pip3 install discord.py requests python-dotenv
+```
+
+Copy the distributed `.env.dist` file to `.env`.
+
+```shell
+cp -av .env.dist .env
 ```
 
 #### run
@@ -73,3 +81,8 @@ venv/bin/python3 discord_bot.py
 ## reference links
 
 ## scratchpad
+
+- settings
+    - appearance
+        - messages
+            * Show embeds and link previews
