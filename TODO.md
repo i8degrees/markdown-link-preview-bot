@@ -17,6 +17,6 @@ This is the project's initial TODO list. Items beyond this list **must** be file
 - [ ] give example input and output of this script in the `README.md`
 - [ ] finish re-structuring our project `README.md`
 - [ ] split the non-Discord bits of code out to another source file
-- [ ] ensure that our `requirements.txt` syntax is correct
+- [x] ensure that our `requirements.txt` syntax is correct
 
 [0]: https://github.com/i8degrees/markdown-link-preview/issues

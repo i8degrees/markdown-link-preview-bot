@@ -63,7 +63,7 @@ Clone the repository and set up the Python virtual environment and dependencies:
 git clone https://github.com/i8degrees/markdown-link-preview.git
 cd markdown-link-preview
 python3 -m venv venv
-venv/bin/pip3 install discord.py requests python-dotenv
+venv/bin/pip3 install -r requirements.txt
 ```
 
 Copy the distributed `.env.dist` file to `.env`.

@@ -38,6 +38,6 @@ ENV \
   VERSION=${VERSION}
 
 RUN python3 -m venv /app/venv && \
-  /app/venv/bin/pip3 install python-dotenv discord.py requests
+  /app/venv/bin/pip3 install -r requirements.txt
 
 ENTRYPOINT ["/app/venv/bin/python3", "/app/discord_bot.py"]
