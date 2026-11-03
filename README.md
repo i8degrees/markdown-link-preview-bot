@@ -3,7 +3,7 @@
 
 # markdown-link-preview
 
-![avatar](avatar.png)
+![avatar](src/images/avatar.png)
 
 This project README walks you through setting up the repository, configuring your Discord application with the required User and Guild installation settings, enabling the necessary bot intents, and finally running the script.
 
