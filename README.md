@@ -1,17 +1,46 @@
 ---
 ---
 
-# markdown-link-preview
+# markdown-link-preview-bot
 
 ![avatar](src/images/avatar.png)
 
-This project README walks you through setting up the repository, configuring your Discord application with the required User and Guild installation settings, enabling the necessary bot intents, and finally running the script.
+A Discord bot that generates clean Markdown link previews for YouTube videos
+that are shared in channels or DMs by extracting the title and author name
+from each link.
+
+You paste the following two links to a channel where this bot is active at:
+
+```
+https://www.youtube.com/watch?v=jEWFSv3ivTg
+https://www.youtube.com/watch?v=YN7X0NfxjPc
+```
+
+The result is:
+
+1. [Draw fewer tiles - by using a Dual-Grid system!](https://www.youtube.com/watch?v=jEWFSv3ivTg) - by jess::codes
+2. [Modular Isometric Pixel Art | Tutorial](https://www.youtube.com/watch?v=YN7X0NfxjPc) - by Brandon James Greer
+
+This is useful for those of us that prefer disabling **Show embeds and link previews**
+in our Discord client.
 
 ## usage
 
-Install this Discord bot with one-click by [markdown-link-preview](https://discord.com/oauth2/authorize?client_id=1565541323333705780)
+This project README walks you through setting up the repository, configuring 
+your Discord application with the required User and Guild installation settings, 
+enabling the necessary bot intents, and finally running the script.
 
-Alternatively, there is a Docker image one can build or pull for local usage.
+### setup
+
+**One-click installation**: Install the *markdown-link-preview-bot* Discord
+bot with [one-click][0]. This requires that I am still running the bot at the
+time you read this and may or may not be the case.
+
+Alternatively, there is a Docker image you can build or pull down for local
+usage. [i8degrees/markdown-link-preview-bot:latest][5].
+
+Lastly, you may run the Python script on your own machine. See XXX header
+section for how to go about doing this.
 
 ### Developers
 
@@ -80,9 +109,5 @@ venv/bin/python3 discord_bot.py
 
 ## reference links
 
-## scratchpad
+[0]: https://discord.com/oauth2/authorize?client_id=1565541323333705780
 
-- settings
-    - appearance
-        - messages
-            * Show embeds and link previews
