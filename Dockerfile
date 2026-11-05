@@ -25,11 +25,11 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY .env /app
 COPY .env.dist /app
-COPY discord_bot.py /app
 COPY LICENSE.md /app
 COPY README.md /app
 COPY requirements.txt /app
 COPY TODO.md /app
+COPY src/ /app/src
 
 # expose inside container
 ENV \
@@ -40,4 +40,5 @@ ENV \
 RUN python3 -m venv /app/venv && \
   /app/venv/bin/pip3 install -r requirements.txt
 
-ENTRYPOINT ["/app/venv/bin/python3", "/app/discord_bot.py"]
+ENTRYPOINT ["/app/venv/bin/python3", "src/bot"]
+

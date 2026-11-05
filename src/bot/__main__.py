@@ -1,9 +1,26 @@
 # discord_bot.py:jeff
 #
 
+import importlib.util
+from importlib.machinery import SourceFileLoader
+
+def load_mod(module_name, file_path):
+    # Works even if the target file has a non-standard extension or no extension
+    loader = SourceFileLoader(module_name, str(file_path))
+    spec = importlib.util.spec_from_loader(module_name, loader)
+
+    if spec is not None:
+        module = importlib.util.module_from_spec(spec)
+        loader.exec_module(module)
+        return module
+    raise ImportError(f"Could not load script at {file_path}")
+
+util = load_mod("util", "./src/util/util.py")
+#util.get_youtube_metadata()
 import os
 import re
-import requests
+#import requests
+
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -32,56 +49,6 @@ if DEBUG:
     print(f'EXPERIMENTAL: {EXPERIMENTAL}')
     print(f'SUPPRESS_EMBED: {SUPPRESS_EMBED}')
 
-def get_youtube_metadata(url) -> dict:
-    """Fetches the video metadata using YouTube's oEmbed API with exception handling."""
-    result: dict = {
-        'title': 'Unknown title',
-        'author_name': 'Unknown author',
-        #'thumbnail_url': "",
-    }
-    final_api_url: str = f'{OEMBED_API_BASE_URL}?url={url}&format={OEMBED_API_FORMAT}'
-    if DEBUG:
-        print(f'final_api_url: {final_api_url}')
-
-    try:
-        response = requests.get(final_api_url, timeout=5)
-        # Raise an HTTPError if the HTTP request returned an unsuccessful status code
-        response.raise_for_status()
-        res = response.json()
-
-        result["title"] = res.get("title", "Unknown title")
-        result["author_name"] = res.get("author_name", "Unknown author")
-        #if bool(EXPERIMENTAL) == True:
-            #result["thumbnail_url"] = res.get("thumbnail_url", "")
-        return result
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching YouTube title for {url}: {e}")
-        return None
-    except (ValueError, KeyError) as e:
-        print(f"Error parsing API response for {url}: {e}")
-        return None
-
-def split_response_lines(lines, limit=1900) -> list:
-    """Chunks a list of lines into chunks that stay safely under the character limit."""
-    chunks = []
-    current_chunk = []
-    current_length = 0
-
-    for line in lines:
-        # +1 accounts for the newline character added during joining
-        if current_length + len(line) + 1 > limit:
-            chunks.append("\n".join(current_chunk))
-            current_chunk = [line]
-            current_length = len(line)
-        else:
-            current_chunk.append(line)
-            current_length += len(line) + 1
-
-    if current_chunk:
-        chunks.append("\n".join(current_chunk))
-
-    return chunks
-
 @bot.event
 async def on_ready():
     print(f'Bot is logged in as {bot.user.name} ({bot.user.id})')
@@ -109,7 +76,7 @@ async def on_message(message):
         # Process each hyperlink found in the message
         for response_counter, match in enumerate(matches, start=1):
             youtube_url = match.group(0)
-            res = get_youtube_metadata(youtube_url)
+            res = util.get_youtube_metadata(youtube_url)
 
             # Format to Discord Markdown: [Title](URL)
             # '<' and '>' prevent Discord from creating default massive embeds
@@ -138,7 +105,7 @@ async def on_message(message):
         if response_lines:
             # Split lines into chunks under 1900 characters to be completely
             # safe
-            message_chunks = split_response_lines(response_lines, limit=1900)
+            message_chunks = util.split_response_lines(response_lines, limit=1900)
             # Send the chunks out sequentially
             for index, chunk in enumerate(message_chunks):
                 if DEBUG:
