@@ -81,7 +81,7 @@ section for how to go about doing this.
 Once dependencies are installed, your token is added to the script, and the bot is installed via Discord's bootstrap link, run the bot using the virtual environment:
 
 ```shell
-venv/bin/python3 discord_bot.py
+venv/bin/python3 src/bot
 ```
 
 #### 4. Repository Setup & Dependencies
@@ -89,8 +89,8 @@ venv/bin/python3 discord_bot.py
 Clone the repository and set up the Python virtual environment and dependencies:
 
 ```shell
-git clone https://github.com/i8degrees/markdown-link-preview.git
-cd markdown-link-preview
+git clone https://github.com/i8degrees/markdown-link-preview-bot.git
+cd markdown-link-preview-bot
 python3 -m venv venv
 venv/bin/pip3 install -r requirements.txt
 ```
@@ -104,7 +104,7 @@ cp -av .env.dist .env
 #### run
 
 ```shell
-venv/bin/python3 discord_bot.py
+venv/bin/python3 src/bot
 ```
 
 ## reference links
