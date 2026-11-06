@@ -16,10 +16,10 @@ def load_mod(module_name, file_path):
     raise ImportError(f"Could not load script at {file_path}")
 
 util = load_mod("util", "./src/util/util.py")
-#util.get_youtube_metadata()
+version = load_mod("version", "./src/util/version.py")
+
 import os
 import re
-#import requests
 
 import discord
 from discord.ext import commands
@@ -39,6 +39,9 @@ YOUTUBE_REGEX = r'(https?://(?:www\.)?youtube\.com/watch\?v=[\w-]+|https?://yout
 OEMBED_API_BASE_URL: str = "https://www.youtube.com/oembed"
 OEMBED_API_FORMAT: str = "json"
 
+# Always print the bot name and version before setting up the Discord bot link
+print(f'{version.__name__} at v{version.__version__}')
+
 # Setup bot intents
 intents = discord.Intents.default()
 intents.message_content = True
@@ -52,7 +55,7 @@ if DEBUG:
 @bot.event
 async def on_ready():
     print(f'Bot is logged in as {bot.user.name} ({bot.user.id})')
-    print('Listening for YouTube links...')
+    print('Listening for YouTube share links...')
 
 @bot.event
 async def on_message(message):

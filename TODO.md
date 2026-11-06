@@ -21,7 +21,7 @@ filed at the official project web site at [i8degrees/markdown-link-preview-bot: 
 - [x] ensure that our `requirements.txt` syntax is correct
 - [x] ensure that we are using a [Docker image without any known
 vulnerabilities][1] as per the report seen inside of vscode
-- [ ] add version metadata to `src/bot/__main__.py` that pulls the current
+- [x] add version metadata to `src/bot/__main__.py` that pulls the current
 version from `.version` alike elsewhere in this repo
 
 [0]: https://github.com/i8degrees/markdown-link-preview-bot/issues

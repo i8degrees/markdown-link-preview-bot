@@ -26,6 +26,8 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY .env /app
 COPY .env.dist /app
+COPY .name /app
+COPY .version /app
 COPY AUTHORS.md /app
 COPY LICENSE.md /app
 COPY README.md /app
