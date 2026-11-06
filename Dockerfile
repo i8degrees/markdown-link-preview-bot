@@ -26,10 +26,11 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY .env /app
 COPY .env.dist /app
+COPY AUTHORS.md /app
 COPY LICENSE.md /app
 COPY README.md /app
-COPY requirements.txt /app
 COPY TODO.md /app
+COPY requirements.txt /app
 COPY src/ /app/src
 
 # expose inside container
