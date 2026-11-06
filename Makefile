@@ -22,6 +22,18 @@ restart:
 	@echo $(IMAGE):$(TAG)
 	docker compose restart
 
+# Stop container
+stop:
+	docker compose stop
+
+# Remove container
+rm:
+	docker compose rm
+
+# Remove container alias
+remove:
+	docker compose rm
+
 # Follow the logging output of the container
 logs:
 	@echo $(IMAGE):$(TAG)
