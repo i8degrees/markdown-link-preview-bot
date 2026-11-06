@@ -18,5 +18,7 @@ This is the project's initial TODO list. Items beyond this list **must** be file
 - [ ] finish re-structuring our project `README.md`
 - [x] split the non-Discord bits of code out to another source file
 - [x] ensure that our `requirements.txt` syntax is correct
+- [ ] ensure that we are using a Docker image without any known 
+vulnerabilities as per the report seen inside of vscode
 
 [0]: https://github.com/i8degrees/markdown-link-preview/issues
