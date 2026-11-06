@@ -1,16 +1,16 @@
 # Makefile:jeff
 #
 
-USER="i8degrees"
+USER=i8degrees
 TAG=$(shell cat .version || echo "1.0.0")
-IMAGE="$(USER)/markdown-link-preview-bot"
+IMAGE=$(USER)/markdown-link-preview-bot
 
 all: build
 
 # Build docker image
 build:
 	@echo $(IMAGE):$(TAG)
-	docker compose build --build-arg VERSION=$(TAG) -t $(IMAGE):$(TAG)
+	docker compose build --build-arg VERSION=$(TAG) #-t $(IMAGE):$(TAG)
 
 # Run docker image
 run:
