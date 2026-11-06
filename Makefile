@@ -3,16 +3,14 @@
 
 USER="i8degrees"
 TAG=$(shell cat .version || echo "1.0.0")
-IMAGE="$(USER)/discord-bot"
+IMAGE="$(USER)/markdown-link-preview-bot"
 
 all: build
 
 # Build docker image
-# TODO(JEFF): Add the VERSION argument to the build for proper version
-# tracking.
 build:
 	@echo $(IMAGE):$(TAG)
-	docker compose build
+	docker compose build --build-arg VERSION=$(TAG) -t $(IMAGE):$(TAG)
 
 # Run docker image
 run:

@@ -6,6 +6,7 @@
 FROM python:3.14-slim-trixie
 LABEL maintainer="Jeffrey Carpenter <jeff@479831.xyz>"
 
+# Override this build argument with docker build --build-arg VERSION=x.x.x
 ARG VERSION=1.0.0
 
 USER root
