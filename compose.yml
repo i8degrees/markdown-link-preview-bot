@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: "Dockerfile"
     command: ["/app/venv/bin/python3", "src/bot"]
-    image: i8degrees/markdown-link-preview-bot:1.2.0
+    image: i8degrees/markdown-link-preview-bot:1.2.1
     container_name: markdown-link-preview-bot-1
     restart: unless-stopped
     tty: true
