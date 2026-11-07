@@ -9,7 +9,7 @@ filed at the official project web site at [i8degrees/markdown-link-preview-bot: 
 ## general
 
 - [ ] consider limiting the number of returned Markdown links to ~10.
-- [ ] finish Docker build scripts
+- [x] finish Docker build scripts
 - [ ] document the user-defined env variables for tweaking bot
     - `DEBUG`
     - `EXPERIMENTAL`
