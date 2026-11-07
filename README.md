@@ -7,9 +7,9 @@
 
 A Discord bot that generates clean Markdown link previews for YouTube videos
 that are shared in channels or DMs by extracting the title and author name
-from each link.
+from each link. Here is an example:
 
-You paste the following two links to a channel where this bot is active at:
+After pasting the following two links to a channel (where this bot is active at):
 
 ```
 https://www.youtube.com/watch?v=jEWFSv3ivTg
@@ -18,17 +18,27 @@ https://www.youtube.com/watch?v=YN7X0NfxjPc
 
 The result is:
 
+```markdown
 1. [Draw fewer tiles - by using a Dual-Grid system!](https://www.youtube.com/watch?v=jEWFSv3ivTg) - by jess::codes
 2. [Modular Isometric Pixel Art | Tutorial](https://www.youtube.com/watch?v=YN7X0NfxjPc) - by Brandon James Greer
+```
+
+Response messages that exceed `1,900` characters will be automatically chunked
+into multiple messages. All known YouTube formats are accepted, such as
+shorts, reels and standard notation.
+
+## inspiration
 
 This is useful for those of us that prefer disabling **Show embeds and link previews**
-in our Discord client.
+in our Discord client. I made an attempt at including the rendered
+thumbnail URL at the end of each link, but Discord disallows this from
+happening, so this is the end result of my implementation.
 
 ## usage
 
-This project README walks you through setting up the repository, configuring 
-your Discord application with the required User and Guild installation settings, 
-enabling the necessary bot intents, and finally running the script.
+This project README walks you through setting up the repository, configuring
+your Discord application with the required User and Guild installation
+settings, enabling the necessary bot intents, and finally running the script.
 
 ### setup
 
