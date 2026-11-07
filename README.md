@@ -101,6 +101,11 @@ Copy the distributed `.env.dist` file to `.env`.
 cp -av .env.dist .env
 ```
 
+Consult the `.env.dist` file for details on what and how to set each
+environment variable for this bot. The absolute minimum is to fill in the
+`DISCORD_BOT_TOKEN` variable with your own token, as per the guide mentioned
+in this document.
+
 #### run
 
 ```shell
